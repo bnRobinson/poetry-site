@@ -19,6 +19,13 @@ public class HomeController {
         put (4, "Frostbite");
     }};
 
+    public final static Map<Integer, String> writings= new HashMap<>(){{
+        put(1, "Chapter 1");
+        put (2, "Chapter 2");
+        put(3, "Chapter 3");
+        put (4, "Chapter 4");
+    }};
+
     @GetMapping ("/")
     @ResponseBody
     public String renderHomePage(){
@@ -46,12 +53,23 @@ public class HomeController {
                 "<html>";
     }
 
-    @GetMapping ("creativeWriting")
+    @GetMapping ("creativeWriting/{")
     @ResponseBody
     public String renderCreativeWriting(){
+
+    StringBuilder writingList = new StringBuilder();
+        for(int writingId: writings.keySet()){
+        String writing = writings.get(writingId);
+        writingList.append("<li><a href='/poetry").append(writingId).append(" '>").append(writing).append("</li>");
+    }
+
+
         return "<html>"+
                 "<body>" +
                 "<h2> Creative Writing </h2>" +
+                "<ul>" +
+                writingList +
+                "</ul>"+
                 "<body>"+
                 "<html>";
 
