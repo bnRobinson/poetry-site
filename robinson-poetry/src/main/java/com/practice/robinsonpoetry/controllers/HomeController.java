@@ -3,6 +3,7 @@ package com.practice.robinsonpoetry.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
@@ -53,9 +54,9 @@ public class HomeController {
                 "<html>";
     }
 
-    @GetMapping ("creativeWriting/{")
+    @GetMapping ("creativeWriting")
     @ResponseBody
-    public String renderCreativeWriting(){
+    public String renderCreativeWritingList(){
 
     StringBuilder writingList = new StringBuilder();
         for(int writingId: writings.keySet()){
@@ -73,5 +74,15 @@ public class HomeController {
                 "<body>"+
                 "<html>";
 
+    }
+
+    @GetMapping("creativeWriting/{writingId}")
+    @ResponseBody
+    public String renderCreativeWritingDetails(@PathVariable int writingId){
+
+        return "ID"+ writingId+
+                ":"+
+                "Name:" +
+                writings.get(writingId);
     }
 }
