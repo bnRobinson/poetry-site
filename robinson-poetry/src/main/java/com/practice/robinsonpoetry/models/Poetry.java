@@ -1,12 +1,12 @@
 package com.practice.robinsonpoetry.models;
 
+import com.practice.robinsonpoetry.data.Writing;
+
 import java.util.Objects;
 
-public class Poetry {
+public class Poetry extends Writing {
 
-    public static int nextId= 1;
 
-    private final int id;
     private String title;
     private String topic;
 
