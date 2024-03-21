@@ -29,13 +29,6 @@ public class CreativeWriting extends Writing{
     }
 
 
-
-
-
-
-
-
-
     @Override
     public String toString(){
         return "Title: "+ title + " Genre: "+ genre;
