@@ -9,6 +9,7 @@ import displayCode from './Pages/DisplayCode'
 import displayPoems from './Pages/DisplayPoems'
 import displayWriting from './Pages/DisplayWriting'
 import homePage from './Pages/HomePage'
+import registrationForm from './Pages/RegistrationForm'
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
       <Route path="/AddPoem" element={<addPoem/>}/>
       <Route path="/AddWriting" element={<addWriting/>}/>
       <Route path="/LoginForm" element={<loginForm/>}/>
+      <Route path="/RegistrationForm" element={<registrationForm/>}/>
       <Route path="/SearchWritingForm" element={<searchWritingForm/>}/>
       <Route path="/Displaycode" element={<displayCode/>}/>
       <Route path="/DisplayPoems" element={<displayPoems/>}/>
