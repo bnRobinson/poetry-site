@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react'
 
 import './App.css'
-import addPoem from './Pages/AddPoem'
-import addWriting from './Pages/AddWriting'
-import loginForm from './Pages/LoginForm'
-import searchWritingForm from './Pages/SearchWritingForm'
-import displayCode from './Pages/DisplayCode'
-import displayPoems from './Pages/DisplayPoems'
-import displayWriting from './Pages/DisplayWriting'
-import homePage from './Pages/HomePage'
-import registrationForm from './Pages/RegistrationForm'
+import addPoem from './Pages/AddPoem.js'
+import addWriting from './Pages/AddWriting.js'
+import loginForm from './Pages/LoginForm.js'
+import searchWritingForm from './Pages/SearchWritingForm.js'
+import displayCode from './Pages/DisplayCode.js'
+import displayPoems from './Pages/DisplayPoems.js'
+import displayWriting from './Pages/DisplayWriting.js'
+import homePage from './Pages/HomePage.js'
+import registrationForm from './Pages/RegistrationForm.js'
 
 
 function App() {

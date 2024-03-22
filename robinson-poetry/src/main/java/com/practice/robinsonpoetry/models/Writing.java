@@ -1,4 +1,4 @@
-package com.practice.robinsonpoetry.data;
+package com.practice.robinsonpoetry.models;
 
 public abstract class Writing {
 

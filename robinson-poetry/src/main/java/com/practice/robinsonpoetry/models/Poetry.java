@@ -1,13 +1,11 @@
 package com.practice.robinsonpoetry.models;
 
-import com.practice.robinsonpoetry.data.Writing;
-
 import java.util.Objects;
 
 public class Poetry extends Writing {
 
 
-    private String title;
+
     private String topic;
 
     public Poetry (String title, String topic){
@@ -17,13 +15,8 @@ public class Poetry extends Writing {
         nextId++;
     }
 
-    public String getTitle() {
-        return title;
-    }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+
 
     public String getTopic() {
         return topic;
@@ -33,9 +26,7 @@ public class Poetry extends Writing {
         this.topic = topic;
     }
 
-    public int getId() {
-        return id;
-    }
+
 
     @Override
     public String toString() {

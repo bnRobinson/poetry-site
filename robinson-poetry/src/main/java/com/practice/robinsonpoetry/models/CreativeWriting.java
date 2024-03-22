@@ -1,7 +1,5 @@
 package com.practice.robinsonpoetry.models;
 
-import com.practice.robinsonpoetry.data.Writing;
-
 import java.util.Objects;
 
 public class CreativeWriting extends Writing{
@@ -9,22 +7,23 @@ public class CreativeWriting extends Writing{
 
 
 
-    private String chapterNumber;
+    private int chapterNumber;
 
-  public CreativeWriting (String title, String genre){
+  public CreativeWriting (String title, String genre, int chapterNumber){
         this. title= title;
         this.genre= genre;
+        this.chapterNumber= chapterNumber;
         this.id= nextId;
         nextId++;
     }
 
 
 
-    public String getChapterNumber() {
+    public int getChapterNumber() {
       return chapterNumber;
     }
 
-    public void setChapterNumber(String aChapterNumber) {
+    public void setChapterNumber(int aChapterNumber) {
         this.chapterNumber = aChapterNumber;
     }
 
