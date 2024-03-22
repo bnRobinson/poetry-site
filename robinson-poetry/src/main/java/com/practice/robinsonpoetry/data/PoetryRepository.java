@@ -1,5 +1,7 @@
 package com.practice.robinsonpoetry.data;
 
-public class PoetryRepository {
+import com.practice.robinsonpoetry.models.Poetry;
+
+public interface PoetryRepository extends CrudRepository<Poetry, String>{
 
 }

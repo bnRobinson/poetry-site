@@ -2,6 +2,8 @@ package com.practice.robinsonpoetry.models;
 
 import java.util.Objects;
 
+
+
 public class Poetry extends Writing {
 
 
