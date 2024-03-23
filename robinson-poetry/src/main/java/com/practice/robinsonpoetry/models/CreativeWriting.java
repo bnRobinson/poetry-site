@@ -13,9 +13,7 @@ public class CreativeWriting extends Writing{
         this. title= title;
         this.genre= genre;
         this.chapterNumber= chapterNumber;
-        this.id= nextId;
-        nextId++;
-    }
+  }
 
 
 
@@ -33,15 +31,16 @@ public class CreativeWriting extends Writing{
         return "Title: "+ title + " Genre: "+ genre;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof CreativeWriting that)) return false;
-        return id == that.id;
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (!(o instanceof CreativeWriting that)) return false;
+//        return id == that.id;
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(id);
+//    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }
