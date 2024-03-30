@@ -7,6 +7,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @MappedSuperclass
@@ -16,8 +19,12 @@ public abstract class Writing {
     @GeneratedValue
     public int id;
 
+    @NotBlank(message="Title Required")
+    @NotNull
     public String title;
 
+    @NotBlank(message="Genre Required")
+    @NotNull
     public String genre;
 
     public int getId(){

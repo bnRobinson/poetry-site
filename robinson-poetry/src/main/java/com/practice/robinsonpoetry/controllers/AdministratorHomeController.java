@@ -1,6 +1,9 @@
 package com.practice.robinsonpoetry.controllers;
 
+import com.practice.robinsonpoetry.data.CreativeWritingRespository;
+import com.practice.robinsonpoetry.data.PoetryRepository;
 import com.practice.robinsonpoetry.models.Poetry;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,23 +15,20 @@ import java.util.Map;
 @Controller
 public class AdministratorHomeController {
 
+@Autowired
+private PoetryRepository poetryRepository;
 
-    private static int nextId = 1;
+@Autowired
+private CreativeWritingRespository creativeWritingRespository;
 
-    public final static Map<Integer, Poetry> poems = new HashMap<>() {{
-        put(1, new Poetry("Autumn", "Nature"));
-        put(2, new Poetry("Baby Thoughts", "Family"));
-        put(3, new Poetry("Dear Mama", "Family"));
-        put(4, new Poetry("Frostbite", "Nature"));
-    }};
-
+//Administrators should be able to add, update, and delete content on web page
     @GetMapping("/addPoem")
     @ResponseBody
     public String renderAddPoemPage(@RequestParam String title, String topic) {
 
         Poetry poem = new Poetry(title, topic);
 
-        poems.put(nextId,poem);
+
 
         return "redirect";
 

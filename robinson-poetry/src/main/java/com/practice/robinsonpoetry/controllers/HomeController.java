@@ -1,7 +1,11 @@
 package com.practice.robinsonpoetry.controllers;
 
+import com.practice.robinsonpoetry.data.CreativeWritingRespository;
+import com.practice.robinsonpoetry.data.PoetryRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -13,19 +17,14 @@ import java.util.Map;
 
 public class HomeController {
 
-    public final static Map<Integer, String> poems= new HashMap<>(){{
-        put(1, "Autumn");
-        put (2, "Baby Thoughts");
-        put(3, "Dear Mama");
-        put (4, "Frostbite");
-    }};
 
-    public final static Map<Integer, String> writings= new HashMap<>(){{
-        put(1, "Chapter 1");
-        put (2, "Chapter 2");
-        put(3, "Chapter 3");
-        put (4, "Chapter 4");
-    }};
+  @Autowired
+  private PoetryRepository poetryRepository;
+
+  @Autowired
+  private CreativeWritingRespository creativeWritingRespository;
+
+  //Users should be able to search content on web page by title, genre, or topic
 
     @GetMapping ("/")
     @ResponseBody
@@ -34,45 +33,19 @@ public class HomeController {
                 "<p>Welcome! View our <a href='/poetry'> Poetry Collection Here</a> </p> " +
                 "<p>View our <a href='/creativeWriting'> Creative Writing Here </a> </p>";
     }
-
+//should display all poetry
     @GetMapping ("/poetry")
     @ResponseBody
-    public String renderPoetry(){
-
-        StringBuilder poemsList = new StringBuilder();
-        for(int poemId : poems.keySet()){
-            String poem = poems.get(poemId);
-            poemsList.append("<li><a href='/poetry").append(poemId).append(" '>").append(poem).append("</li>");
-        }
-        return "<html>"+
-                "<body>" +
-                "<h2> POETRY </h2>" +
-                "<ul>"+
-                poemsList+
-                "<ul>"+
-                "<body>"+
-                "<html>";
+    public String renderPoetry(Model model){
+    model.addAttribute("title", "All Poems");
+    model.addAttribute("poems", poetryRepository.findAll())
+            return "poems/index";
     }
 
     @GetMapping ("creativeWriting")
     @ResponseBody
     public String renderCreativeWritingList(){
 
-    StringBuilder writingList = new StringBuilder();
-        for(int writingId: writings.keySet()){
-        String writing = writings.get(writingId);
-        writingList.append("<li><a href='/poetry").append(writingId).append(" '>").append(writing).append("</li>");
-    }
-
-
-        return "<html>"+
-                "<body>" +
-                "<h2> Creative Writing </h2>" +
-                "<ul>" +
-                writingList +
-                "</ul>"+
-                "<body>"+
-                "<html>";
 
     }
 
@@ -80,9 +53,6 @@ public class HomeController {
     @ResponseBody
     public String renderCreativeWritingDetails(@PathVariable int writingId){
 
-        return "ID"+ writingId+
-                ":"+
-                "Name:" +
-                writings.get(writingId);
+
     }
 }
