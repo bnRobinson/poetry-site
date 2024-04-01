@@ -3,9 +3,13 @@ package com.practice.robinsonpoetry.controllers;
 import com.practice.robinsonpoetry.data.CreativeWritingRespository;
 import com.practice.robinsonpoetry.data.PoetryRepository;
 import com.practice.robinsonpoetry.models.Poetry;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -24,24 +28,23 @@ private CreativeWritingRespository creativeWritingRespository;
 //Administrators should be able to add, update, and delete content on web page
     @GetMapping("/addPoem")
     @ResponseBody
-    public String renderAddPoemPage(@RequestParam String title, String topic) {
+    public String processCreatePoemForm(@ModelAttribute @Valid Poetry newPoem, Errors errors, Model model) {
 
-        Poetry poem = new Poetry(title, topic);
+        if (errors.hasErrors()){
+            return "/addPoem";
+        }
 
-
+    PoetryRepository.save(newPoem);
 
         return "redirect";
 
-//        poems.put(nextId, title, topic);
-//        nextId ++;
-//        return "<html>" +
-//                "<body>" +
-//                "<h2>" +
-//                "Poem Successfully Added!"+
-//                "<h2>" +
-//                "<p> Your poem" + poem + "has been added to the poetry collection <p>" +
-//                "</body>" +
-//                "</html>";
+    }
 
+    @GetMapping("/deletePoem")
+    @ResponseBody
+    public String processDeletePoemForm(Model model) {
+        model.addAttribute("title", "Delete Poem");
+        model.addAttribute("Poetry", poetryRepository.findAll());
+        return "/deletePoem";
     }
 }

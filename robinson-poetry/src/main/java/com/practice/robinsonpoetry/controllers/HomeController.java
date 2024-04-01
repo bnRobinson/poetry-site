@@ -38,14 +38,17 @@ public class HomeController {
     @ResponseBody
     public String renderPoetry(Model model){
     model.addAttribute("title", "All Poems");
-    model.addAttribute("poems", poetryRepository.findAll())
+    model.addAttribute("Poetry", poetryRepository.findAll());
             return "poems/index";
     }
 
     @GetMapping ("creativeWriting")
     @ResponseBody
-    public String renderCreativeWritingList(){
+    public String renderCreativeWritingList(Model model){
 
+      model.addAttribute("title", "All Creative Writing");
+      model.addAttribute("CreativeWriting", creativeWritingRespository.findAll());
+      return "CreativeWriting/index";
 
     }
 
@@ -53,6 +56,6 @@ public class HomeController {
     @ResponseBody
     public String renderCreativeWritingDetails(@PathVariable int writingId){
 
-
+return "CreativeWriting";
     }
 }
