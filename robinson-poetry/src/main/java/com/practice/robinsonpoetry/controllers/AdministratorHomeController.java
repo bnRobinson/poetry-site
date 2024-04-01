@@ -2,6 +2,7 @@ package com.practice.robinsonpoetry.controllers;
 
 import com.practice.robinsonpoetry.data.CreativeWritingRespository;
 import com.practice.robinsonpoetry.data.PoetryRepository;
+import com.practice.robinsonpoetry.models.CreativeWriting;
 import com.practice.robinsonpoetry.models.Poetry;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,4 +58,23 @@ private CreativeWritingRespository creativeWritingRespository;
         }
         return "/deletePoemForm";
     }
+
+    @GetMapping("/addCreativeWriting")
+    @ResponseBody
+    public String processCreateCreativeWritingForm (@ModelAttribute @Valid CreativeWriting newCreativeWriting, Errors errors, Model model){
+        return "/redirect";
+    }
+
+    @GetMapping("/deleteCreativeWritingForm")
+    @ResponseBody
+    public String displayDeleteCreativeWritingForm() {
+        return "/deleteCreativeWriting";
+    }
+
+    @GetMapping("/deleteCreativeWriting")
+    public String processDeleteCreativeWriting(){
+        return "/redirect";
+    }
+
+
 }
