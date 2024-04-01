@@ -40,11 +40,21 @@ private CreativeWritingRespository creativeWritingRespository;
 
     }
 
-    @GetMapping("/deletePoem")
+    @GetMapping("/deletePoemForm")
     @ResponseBody
-    public String processDeletePoemForm(Model model) {
+    public String processDisplayDeletePoemForm(Model model) {
         model.addAttribute("title", "Delete Poem");
         model.addAttribute("Poetry", poetryRepository.findAll());
         return "/deletePoem";
+    }
+
+    @GetMapping("/deletePoem")
+    public String processDeletePoemForm(@RequestParam( required=false) int[] id){
+        if (id != null){
+            for (int Id: id) {
+                PoetryRepository.deleteAll(id);
+            }
+        }
+        return "/deletePoemForm";
     }
 }
