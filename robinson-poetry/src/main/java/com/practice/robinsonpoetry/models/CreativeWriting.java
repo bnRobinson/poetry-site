@@ -1,7 +1,9 @@
 package com.practice.robinsonpoetry.models;
 
-import java.util.Objects;
+import jakarta.persistence.Entity;
 
+import java.util.Objects;
+@Entity
 public class CreativeWriting extends Writing{
 
 

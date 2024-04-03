@@ -35,7 +35,7 @@ private CreativeWritingRespository creativeWritingRespository;
             return "/addPoem";
         }
 
-    PoetryRepository.save(newPoem);
+    //PoetryRepository.save(newPoem);
 
         return "redirect";
 
@@ -53,7 +53,7 @@ private CreativeWritingRespository creativeWritingRespository;
     public String processDeletePoemForm(@RequestParam( required=false) int[] id){
         if (id != null){
             for (int Id: id) {
-                PoetryRepository.deleteAll(id);
+                //PoetryRepository.deleteAll(id);
             }
         }
         return "/deletePoemForm";
