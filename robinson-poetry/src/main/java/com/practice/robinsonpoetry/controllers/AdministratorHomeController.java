@@ -31,11 +31,12 @@ private CreativeWritingRespository creativeWritingRespository;
     @ResponseBody
     public String processCreatePoemForm(@ModelAttribute @Valid Poetry newPoem, Errors errors, Model model) {
 
+
         if (errors.hasErrors()){
             return "/addPoem";
         }
 
-    //PoetryRepository.save(newPoem);
+    poetryRepository.save(newPoem);
 
         return "redirect";
 
@@ -50,10 +51,10 @@ private CreativeWritingRespository creativeWritingRespository;
     }
 
     @GetMapping("/deletePoem")
-    public String processDeletePoemForm(@RequestParam( required=false) int[] id){
+    public String processDeletePoemForm(@RequestParam( required=false) int[] poemid, Integer id){
         if (id != null){
-            for (int Id: id) {
-                //PoetryRepository.deleteAll(id);
+            for (int Id: poemid) {
+                poetryRepository.deleteById(id);
             }
         }
         return "/deletePoemForm";
@@ -75,6 +76,5 @@ private CreativeWritingRespository creativeWritingRespository;
     public String processDeleteCreativeWriting(){
         return "/redirect";
     }
-
 
 }
